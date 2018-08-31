@@ -1,0 +1,61 @@
+@import './setup.scss';
+@import './typography.scss';
+@import './overlay.scss';
+
+// $main: 'Roboto Mono', monospace;
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  margin: 0;
+  width: 100vw;
+  min-height: 100vh;
+  padding: 0;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  font-family: sans-serif;
+}
+
+
+.search-bar {
+  grid-column: 1 / -1;
+  grid-row: 1 / span 1;
+  background-color: #F1C40F;
+}
+
+form {
+  display: flex;
+}
+
+label { display: none; }
+
+input[type=text],
+button {
+  border: 0;
+  outline: 0;
+}
+
+input[type=text] {
+  flex: 1 0 50%;
+  width: 98%;
+  padding: 2%;
+  background-color: goldenrod;
+  font-family: $main;
+}
+
+button {
+  padding: 2px 6px;
+  flex: 0 0 30px;
+}
+
+
+i::before {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}

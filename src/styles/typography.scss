@@ -1,0 +1,15 @@
+$main: 'Roboto Mono', monospace;
+ 
+html {
+    font-size: 62.5%;
+}
+body {
+    font-size: 1.6rem;
+    font-family: $main;
+}
+button {
+    font-family: $main;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}

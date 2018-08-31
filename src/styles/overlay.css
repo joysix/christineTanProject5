@@ -1,0 +1,27 @@
+.search-results {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  padding: 15px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 86px);
+  grid-template-rows: min-content;
+  grid-auto-rows: 135px;
+  grid-gap: 15px;
+  background-color: #56657380; }
+
+.close {
+  grid-column: 1 / -1;
+  grid-row: 1 / span 1;
+  justify-self: end;
+  align-self: start; }
+
+.movie-thumb {
+  padding: 5px;
+  display: grid;
+  justify-content: end;
+  align-content: end;
+  background-size: cover;
+  background-position: center; }
+
+.add {
+  background-color: #ffffffcc; }
