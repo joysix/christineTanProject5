@@ -3,13 +3,22 @@ $main: 'Roboto Mono', monospace;
 html {
     font-size: 62.5%;
 }
+
+
 body {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-family: $main;
 }
+
+* { font-family: $main; }
+
+input {
+    font-family: inherit;
+}
+
 button {
-    font-family: $main;
-    font-size: 1.2rem;
-    font-weight: 700;
+    font-family: inherit;
+    font-size: 1.6rem;
+    font-weight: 500;
     text-transform: uppercase;
 }

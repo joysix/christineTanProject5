@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import firebase from './firebase';
 import './App.css';
 import './styles/styles.css';
-import { getQueryResults } from './axios';
+import { getQueryResults, getMovieDetails } from './axios';
 import SearchBar from './SearchBar';
 import SearchResults from './SearchResults';
+import Buttons from './Buttons';
+import UserModal from './UserModal';
+import Picks from './Picks';
 
 // PSEUDO CODE
 // on submit, pass user input into a search call to moviedb
@@ -16,7 +19,7 @@ import SearchResults from './SearchResults';
     // remove from array
     // remove movie still from page
 
-const dbRef = firebase.database().ref();
+const db = firebase.database();
 
 class App extends Component {
   constructor() {
@@ -24,52 +27,117 @@ class App extends Component {
     super();
     this.state = {
       finalResults: [],
+      user: '',
+      key: '',
+      picks: [],
+      count: 0,
       renderSearchResults: false,
-      picks: []
+      renderUserModal: false,
     }
   }
 
-  handleRender = () => {
+  handleRender = (component, boo) => {
     this.setState({
-      renderSearchResults: false
+      [component]: boo
     })
   }
 
-  addMovie = (key) => {
-    const index = this.state.finalResults.map(movie => movie.id).indexOf(Number(key));
-    const picks = Array.from(this.state.picks);
-    picks.push(this.state.finalResults[index]);
+  addUser = (user) => {
+    const key = db.ref().push().key;
     this.setState({
-      finalResults: [],
-      renderSearchResults: false,
-      picks
+      user,
+      key,
+      count: 0,
+      renderUserModal: false
     })
-  }
-  
-  componentDidMount() {
-    console.log('componentDidMount');
-    dbRef.on('value', (snapshot) => {
-      console.log('listening...');
-      console.log(snapshot.val());
-    })
+    db.ref('users').update({ [user]: key});
+    db.ref(key).set({ user: user, count: 0 });
   }
 
-  render() {
-    // console.log('App render called');
-    const processQueryResults = (query) => {
-      getQueryResults(query)
+  processQueryResults = (query) => {
+    getQueryResults(query)
       .then(finalResults => {
         this.setState({
           finalResults: finalResults,
           renderSearchResults: true
         });
       });
-    }
+  }
+  
+  processMovieDetails = (id) => {
+  getMovieDetails(id)
+    .then(finalDetails => {
+      const count = this.state.count + 1;
+      this.setState({
+        count
+      })
+      const rank = this.state.count;
+      finalDetails.rank = rank;
+      const key = this.state.key;
+      db.ref(key).update({count: rank});
+      db.ref(key).child('picks').child(finalDetails.id).set(finalDetails);
+    })
+  }
 
+  addMovie = (key) => {
+    this.setState({
+      finalResults: [],
+      renderSearchResults: false,
+    })
+    this.processMovieDetails(key);
+  }
+  
+  removeMovie = (id) => {
+    const key = this.state.key;
+    const count = this.state.count - 1;
+    db.ref(`/${key}`).update({count});
+    db.ref(`/${key}/picks`).child(id).remove();
+  }
+
+  
+  random = (max, min = 0) => {
+    const num = Math.floor(Math.random() * max + min)
+    // console.log(num);
+    return num;
+  }
+
+  
+  componentDidMount() {
+    console.log('componentDidMount');
+    if(this.state.key === '') {
+      db.ref().on('value', (snapshot) => {
+       const data = snapshot.val();
+       console.log(data);
+       if (data) {
+         const keys = Object.keys(data).filter(key => key !== 'users');
+         const key = keys[this.random(keys.length)];
+         const values = Object.values(data[key].picks);
+         const picks = values.sort((a, b) => a.rank - b.rank);
+         console.log(picks);
+         this.setState({
+           key,
+           user: data[key].user,
+           picks,
+           count: data[key].count
+         })
+       }
+      })
+    }
+  }
+
+
+  render() {
     return (
       <div className="App">
-      <SearchBar processQueryResults={processQueryResults} />
-      { this.state.renderSearchResults ? <SearchResults finalResults={this.state.finalResults} renderSelf={this.handleRender} addMovie={this.addMovie} /> : null}
+      { this.state.renderUserModal ? 
+      <UserModal renderSelf={this.handleRender} addUser={this.addUser} /> 
+      : null }
+      <SearchBar processQueryResults={this.processQueryResults} />
+      <Buttons renderSelf={this.handleRender} addUser={this.addUser} />
+      { this.state.renderSearchResults ? 
+        <SearchResults finalResults={this.state.finalResults} renderSelf={this.handleRender} addMovie={this.addMovie} />
+        : null }
+      <Picks picks={this.state.picks} removeMovie={this.removeMovie}/>
       </div>
     );
   }

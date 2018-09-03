@@ -1,21 +1,39 @@
 .search-results {
   grid-column: 1 / -1;
   grid-row: 1 / -1;
-  padding: 15px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, 86px);
-  grid-template-rows: min-content;
-  grid-auto-rows: 135px;
-  grid-gap: 15px;
-  background-color: #56657380; }
+  grid-template-rows: auto 1fr;
+  background-color: #56657380;
+  z-index: 99; }
 
 .close {
   grid-column: 1 / -1;
   grid-row: 1 / span 1;
-  justify-self: end;
-  align-self: start; }
+  justify-self: center;
+  align-self: center;
+  margin: 10px; }
 
-.movie-thumb {
+.container {
+  grid-column: 1 / -1;
+  grid-row: 2 / -1;
+  display: grid;
+  justify-content: stretch;
+  padding: 15px; }
+
+.thumbs {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  width: 100%;
+  max-height: 95%;
+  display: grid;
+  justify-content: center;
+  align-content: start;
+  grid-template-columns: repeat(auto-fill, 86px);
+  grid-auto-rows: 135px;
+  grid-gap: 10px;
+  overflow: scroll; }
+
+.thumb {
   padding: 5px;
   display: grid;
   justify-content: end;
