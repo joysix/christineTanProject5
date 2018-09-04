@@ -1,0 +1,48 @@
+@import './utils.scss';
+
+p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+.picks {
+    @include grid;
+    list-style: none;
+}
+
+.pick {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto 1fr auto;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+}
+
+.buttons {
+    padding: 10px;
+    grid-column: span 1 / -1;
+    grid-row: 1 / span 1;
+    .remove {
+        background-color: $whiteclear;
+        padding: 0 6px;
+    }
+}
+
+.title {
+    grid-column: 1 / -1;
+    grid-row: span 1 / -1;
+    padding: 0px 10px 10px 10px;
+    align-self: end;
+    .title-year {
+        background-color: $whiteclear;
+    }
+}
+
+.pick .rank {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    justify-self: start;
+    align-self: start;
+}

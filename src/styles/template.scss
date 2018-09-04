@@ -1,0 +1,94 @@
+@import './utils.scss';
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  margin: 0;
+  max-width: 100vw;
+  height: 100vh;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: auto 1fr;
+	overflow-x: hidden;
+  @media (min-height: 500px) {
+	max-height: 100vh;
+  }
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+  }
+}
+
+.block {
+	visibility: hidden;
+}
+
+.block, .title-block {
+	grid-column: 1 / span 2;
+	grid-row: 1 / span 1;
+	@media (max-width: 480px) {
+		grid-column: 1 / -1;
+	}
+}
+
+.title-block {
+	display: grid;
+	grid-template-rows: auto min-content;
+	overflow: hidden;
+	* {
+		grid-column: 1 / -1;	
+		grid-row: span 1 / -1;
+	}
+	h1 {
+		justify-self: end;
+		align-self: end;
+		padding-right: 10px;
+	}
+	h2 {
+		justify-self: end;
+		align-self: start;
+		margin-top: 10px;
+		padding: 0 20px;
+		background-color: $accent;
+		@media (max-width: 480px) {
+			grid-template-rows: min-content min-content;
+			grid-row: 1 / span 1;
+			align-self: end;
+		}
+	}
+}
+
+.template {
+	@include grid;
+}
+.rank {
+	display: grid;
+	justify-content: end;
+	align-content: end;
+	overflow: hidden;
+}
+
+@media (min-width: 916px) {
+	.rank1, .rank2, .rank4, .rank5, .rank6, .rank8, .rank9, .rank10 {
+		border-left: 0.5px dashed $grey;
+	}
+	.rank3, .rank4, .rank5, .rank6, .rank7, .rank8, .rank9, .rank10 {
+		border-top: 0.5px dashed $grey;
+	}
+}
+
+@media (max-width: 915px) {
+	.rank {
+		border-top: 0.5px dashed $grey;
+	}	
+	.rank1, .rank3, .rank5, .rank7, .rank9 {
+		border-right: 0.5 dashed $grey;
+	}
+	.block {
+		border: 0;
+	}
+}

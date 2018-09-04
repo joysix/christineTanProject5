@@ -5,7 +5,6 @@ const api_key = '2b03b1ad14b5664a21161db2acde3ab5';
 const language = 'en-US';
 
 export function getQueryResults(query, page = 1) {
-    // console.log('axios getQueryResults called');
     return axios.get(`${url}search/multi`, {
         params: {
             api_key,
@@ -14,6 +13,7 @@ export function getQueryResults(query, page = 1) {
             page
         }
     }).then((res) => {
+        
         const noTv = res.data.results.filter((hit) => {
             return !(hit.media_type === 'tv')
         });
@@ -36,8 +36,38 @@ export function getQueryResults(query, page = 1) {
             }
             return work;
         })
-        const finalResults = [].concat(...results);
-        console.log(finalResults);
+
+        const resultsArr = [].concat(...results);
+        const finalResults = resultsArr.filter(movie => movie.poster);
         return finalResults;
+    });
+}
+
+export function getMovieDetails(id) {
+    return axios.get(`${url}movie/${id}`, {
+        params: {
+            api_key
+        }
+    }).then((res) => {
+        const data = res.data;
+        
+        let bg;
+
+        if (!data.backdrop_path) {
+            bg = data.poster_path;
+        } else {
+            bg = data.backdrop_path;
+        }
+
+        let movieDetails = {
+            id: data.id,
+            title: data.title,
+            year: parseInt(data.release_date, 10),
+            tagline: data.tagline,
+            overview: data.overview,
+            bg: `https://image.tmdb.org/t/p/original${bg}`
+        }
+
+        return movieDetails;
     });
 }

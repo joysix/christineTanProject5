@@ -2,11 +2,53 @@ html {
   font-size: 62.5%; }
 
 body {
+  color: #111;
   font-size: 1.6rem;
   font-family: "Roboto Mono", monospace; }
 
-button {
-  font-family: "Roboto Mono", monospace;
-  font-size: 1.2rem;
-  font-weight: 700;
+h1, h2 {
+  margin: 0;
+  padding: 0;
+  display: block; }
+
+h1 {
+  font-family: "Racing Sans One", cursive;
+  font-size: 14rem;
   text-transform: uppercase; }
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 8rem; } }
+
+h2 {
+  font-weight: 500; }
+  @media (max-width: 480px) {
+    h2 {
+      font-size: 2rem; } }
+
+* {
+  font-family: "Roboto Mono", monospace; }
+
+input, button {
+  font-family: inherit;
+  font-size: 1.4rem;
+  font-weight: 500; }
+
+button {
+  text-transform: uppercase;
+  letter-spacing: 0.1rem; }
+  button .close {
+    text-transform: lowercase; }
+
+.title {
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase; }
+
+.rank, .rank > p {
+  font-family: "Racing Sans One", cursive;
+  font-size: 14rem;
+  color: #F1C40F; }
+
+.pick .rank {
+  font-size: 7rem;
+  color: #FFFFFFCC; }
