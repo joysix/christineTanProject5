@@ -2,24 +2,19 @@ import React, { Component } from 'react';
 
 class SearchBar extends Component {
     constructor() {
-        // console.log('SearchBar constructor called');
         super();
         this.state = {
             query: ''
         }
     }
 
-    // updates query state to value of user input
     handleChange = (e) => {
-        // console.log('SearchBar handleChange called');
         this.setState({
             query: e.target.value
         });
     }
 
-    // prevents refresh when form submits, then calls processQueryResults
     handleSubmit = (e) => {
-        // console.log('SearchBar handleSubmit called');
         e.preventDefault();
         this.props.processQueryResults(this.state.query);
         this.setState({
@@ -28,7 +23,6 @@ class SearchBar extends Component {
     }
 
     render() {
-        // console.log('SearchBar render called');
         return(
             <form className="search" onSubmit={this.handleSubmit}>
                 <label htmlFor="search">Search</label>

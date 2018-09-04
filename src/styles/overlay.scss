@@ -1,8 +1,6 @@
 @import './utils.scss';
 
 .overlay {
-  // grid-column: 1 / -1;
-  // grid-row: 1 / -1;
   position: absolute;
   top: 0;
   left: 0;
@@ -13,7 +11,7 @@
   justify-content: stretch;
   align-content: center;
   text-align: center;
-  background-color: #566573e6;
+  background-color: $greyclear;
   z-index: 99;
   @media (max-width: 480px) {
     padding: 10px;

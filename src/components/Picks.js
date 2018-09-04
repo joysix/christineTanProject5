@@ -13,11 +13,6 @@ class Picks extends Component {
                 <div id={pick.id} className="buttons">
                     <button className="remove" onClick={() => this.props.removeMovie(pick.id)} title="remove movie">X</button>
                 </div>
-                {/* <div id={pick.id} className="frame">
-                    <div id={pick.id} className="synopsis">
-                        {pick.overview}
-                    </div>
-                </div> */}
             </li>
         );
     });

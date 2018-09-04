@@ -9,7 +9,7 @@
   justify-content: stretch;
   align-content: center;
   text-align: center;
-  background-color: #566573e6;
+  background-color: #566573E6;
   z-index: 99; }
   @media (max-width: 480px) {
     .overlay {

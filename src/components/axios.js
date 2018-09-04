@@ -5,7 +5,6 @@ const api_key = '2b03b1ad14b5664a21161db2acde3ab5';
 const language = 'en-US';
 
 export function getQueryResults(query, page = 1) {
-    // console.log('axios getQueryResults called');
     return axios.get(`${url}search/multi`, {
         params: {
             api_key,
@@ -45,7 +44,6 @@ export function getQueryResults(query, page = 1) {
 }
 
 export function getMovieDetails(id) {
-    // console.log('axios getMovieDetails called');
     return axios.get(`${url}movie/${id}`, {
         params: {
             api_key

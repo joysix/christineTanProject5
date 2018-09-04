@@ -1,7 +1,6 @@
 import React from 'react';
 
 const SearchResults = (props) => {
-    // console.log('searchResults called')
     return (
         <div className="overlay">
             <button className="close" onClick={() => props.renderSelf('renderSearchResults', false)}>Close</button>
