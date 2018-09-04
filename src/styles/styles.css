@@ -385,7 +385,8 @@ button {
 
 input[type=text],
 .submit {
-  margin: 8px; }
+  margin: 8px;
+  border: 1px solid transparent; }
 
 input.search {
   margin-right: 0;
@@ -393,6 +394,9 @@ input.search {
   @media (max-width: 480px) {
     input.search {
       width: 100%; } }
+  input.search:hover, input.search:focus {
+    background-color: transparent;
+    border: 1px solid #FFFFFF80; }
 
 .submit {
   margin-left: 0; }
@@ -418,7 +422,11 @@ input.search {
       top: 0; } }
   .lists button {
     margin: 8px 0px;
-    width: max-content; }
+    width: max-content;
+    border: 1px solid transparent; }
+    .lists button:hover {
+      background-color: #F1C40F;
+      border: 1px solid #FFFFFF80; }
   .lists .new {
     margin: 8px; }
 
@@ -475,8 +483,11 @@ p, ul, li {
   grid-column: span 1 / -1;
   grid-row: 1 / span 1; }
   .buttons .remove {
+    padding: 0 7px 3px 8px;
     background-color: #FFFFFFCC;
-    padding: 0 6px; }
+    text-transform: lowercase; }
+    .buttons .remove:hover {
+      background-color: #F1C40F; }
 
 .title {
   grid-column: 1 / -1;

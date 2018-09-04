@@ -25,8 +25,12 @@ p, ul, li {
     grid-column: span 1 / -1;
     grid-row: 1 / span 1;
     .remove {
+        padding: 0 7px 3px 8px;
         background-color: $whiteclear;
-        padding: 0 6px;
+        text-transform: lowercase;
+        &:hover {
+            background-color: $accent;
+        }
     }
 }
 

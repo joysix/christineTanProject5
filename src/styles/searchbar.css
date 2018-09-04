@@ -21,7 +21,8 @@ button {
 
 input[type=text],
 .submit {
-  margin: 8px; }
+  margin: 8px;
+  border: 1px solid transparent; }
 
 input.search {
   margin-right: 0;
@@ -29,6 +30,9 @@ input.search {
   @media (max-width: 480px) {
     input.search {
       width: 100%; } }
+  input.search:hover, input.search:focus {
+    background-color: transparent;
+    border: 1px solid #FFFFFF80; }
 
 .submit {
   margin-left: 0; }
@@ -54,7 +58,11 @@ input.search {
       top: 0; } }
   .lists button {
     margin: 8px 0px;
-    width: max-content; }
+    width: max-content;
+    border: 1px solid transparent; }
+    .lists button:hover {
+      background-color: #F1C40F;
+      border: 1px solid #FFFFFF80; }
   .lists .new {
     margin: 8px; }
 

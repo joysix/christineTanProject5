@@ -44,8 +44,11 @@ p, ul, li {
   grid-column: span 1 / -1;
   grid-row: 1 / span 1; }
   .buttons .remove {
+    padding: 0 7px 3px 8px;
     background-color: #FFFFFFCC;
-    padding: 0 6px; }
+    text-transform: lowercase; }
+    .buttons .remove:hover {
+      background-color: #F1C40F; }
 
 .title {
   grid-column: 1 / -1;
