@@ -1,0 +1,40 @@
+$display: 'Racing Sans One', cursive;
+$body: 'Roboto Mono', monospace;
+
+$accent: #F1C40F;
+$accentclear: unquote('#F1C40F80');
+$whiteclearer: unquote('#FFFFFF80'); 
+$whiteclear: unquote('#FFFFFFCC'); 
+$black: #111;
+$grey: #333;
+$greyclear: #566573CC;
+
+@mixin grid {
+    grid-column: 1 / -1;
+    grid-row: 2 / -1;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    @media (min-height: 481px) and (min-width: 916px) {
+        max-height: 100%;
+    }
+    // @media (max-height: 480px) {
+    //     // height: fit-content;
+    // }
+    @media (max-width: 915px) {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+        grid-auto-rows: 33vw;
+    }
+    @media (max-width: 480px) {
+        grid-row: 2 / -2;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(11, 30vh);
+        grid-auto-rows: 66vw;
+        margin-bottom: 37px;
+    }
+}

@@ -1,12 +1,16 @@
-.search-bar {
-  grid-column: 1 / span 1;
+@import './utils.scss';
+
+form.search {
+  grid-column: 1 / span 3;
   grid-row: 1 / span 1;
-  @media (max-width: 480px) {
-    grid-column: 1 / -1;
-    grid-row: span 1 / -1;
-  }
   display: flex;
-  background-color: #F1C40F;
+  background-color: $accent;
+  @media (max-width: 480px) {
+    margin: auto;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+  }
 }
 
 label { display: none; }
@@ -15,35 +19,51 @@ input[type=text],
 button {
   border: 0;
   outline: 0;
-  background-color: goldenrod;
+  background-color: $whiteclearer;
 }
 
-input[type=text] {
-  flex: 1 0 50%;
-  width: 99%;
-  padding: 5px 1%;
+input[type=text],
+.submit {
+  margin: 8px;
 }
 
-button {
-  padding: 0 8px;
-  flex: 0 0 30px; 
+input.search {
+  margin-right: 0;
+  width: 100%;
+  @media (max-width: 480px) {
+    width: 100%;
+  }
+}
+
+.submit {
+  margin-left: 0;
+  @media (max-width: 480px) {
+    flex: 0 0 fit-content;
+  }
 }
 
 .lists {
   grid-column: span 1 / -1;
   grid-row: 1 / span 1;
   display: flex;
-  flex-flow: column;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
   text-align: right;
-  background-color: goldenrod;
+  background-color: $accent;
   @media (max-width: 480px) {
     grid-column: 1 / -1;
     grid-row: 1 / span 1;
     display: inline-block;
+    width: 100%;
+    position: fixed;
+    top: 0;
   }
   button {
-    // margin: 10px;
-    text-align: right;
+    margin: 8px 0px;
+    width: max-content;
+  }
+  .new {
+    margin: 8px;
   }
 }
 

@@ -30,9 +30,9 @@ class SearchBar extends Component {
     render() {
         // console.log('SearchBar render called');
         return(
-            <form className="search-bar" onSubmit={this.handleSubmit}>
+            <form className="search" onSubmit={this.handleSubmit}>
                 <label htmlFor="search">Search</label>
-                <input id="search" type="text" name={this.state.query} value={this.state.query} placeholder="search" onChange={this.handleChange} />
+                <input id="search" type="text" className="search" name={this.state.query} value={this.state.query} placeholder="search movies..." onChange={this.handleChange} />
                 <button className="submit"><i className="fas fa-search"></i></button>
             </form>
         )

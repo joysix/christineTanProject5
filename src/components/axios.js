@@ -65,7 +65,7 @@ export function getMovieDetails(id) {
             id: data.id,
             title: data.title,
             year: parseInt(data.release_date, 10),
-            tagline: data.tagline || 'No tagline.',
+            tagline: data.tagline,
             overview: data.overview,
             bg: `https://image.tmdb.org/t/p/original${bg}`
         }

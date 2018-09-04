@@ -1,26 +1,7 @@
 @import './setup.scss';
+@import './utils.scss';
 @import './typography.scss';
-@import './searchbar.scss';
+@import './template.scss';
 @import './overlay.scss';
+@import './searchbar.scss';
 @import './picks.scss';
-
-body {
-  margin: 0;
-  padding: 0;
-}
-
-.App {
-  margin: 0;
-  max-width: 100vw;
-  max-height: 100vh;
-  padding: 0;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  grid-template-rows: auto 1fr;
-  font-family: sans-serif;
-  @media (max-width: 480px) {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr auto;
-  }
-
-}

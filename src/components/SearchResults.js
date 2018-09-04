@@ -3,9 +3,9 @@ import React from 'react';
 const SearchResults = (props) => {
     // console.log('searchResults called')
     return (
-        <div className="search-results">
-        <button className="close overlay" onClick={() => props.renderSelf('renderSearchResults', false)}>Close</button>
-            <div className="container">
+        <div className="overlay">
+            <button className="close" onClick={() => props.renderSelf('renderSearchResults', false)}>Close</button>
+            <div className="search-results">
                 <div className="thumbs">
                     {props.finalResults.map((result) => {
                         return (
