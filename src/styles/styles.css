@@ -150,7 +150,7 @@ h1 {
   text-transform: uppercase; }
   @media (max-width: 480px) {
     h1 {
-      font-size: 6rem; } }
+      font-size: 8rem; } }
 
 h2 {
   font-weight: 500; }
@@ -207,6 +207,9 @@ body {
       grid-template-columns: 1fr;
       grid-template-rows: auto 1fr auto; } }
 
+.block {
+  visibility: hidden; }
+
 .block, .title-block {
   grid-column: 1 / span 2;
   grid-row: 1 / span 1; }
@@ -233,6 +236,7 @@ body {
     background-color: #F1C40F; }
     @media (max-width: 480px) {
       .title-block h2 {
+        grid-template-rows: min-content min-content;
         grid-row: 1 / span 1;
         align-self: end; } }
 
@@ -245,7 +249,8 @@ body {
   padding: 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, 1fr); }
+  grid-template-rows: repeat(3, 1fr);
+  align-content: start; }
   @media (min-height: 481px) and (min-width: 916px) {
     .template {
       max-height: 100%; } }
@@ -258,9 +263,9 @@ body {
     .template {
       grid-row: 2 / -2;
       grid-template-columns: 1fr;
-      grid-template-rows: repeat(11, 30vh);
+      grid-template-rows: auto;
       grid-auto-rows: 66vw;
-      margin-bottom: 37px; } }
+      padding-top: 37px; } }
 
 .rank {
   display: grid;
@@ -438,6 +443,7 @@ p, ul, li {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, 1fr);
+  align-content: start;
   list-style: none; }
   @media (min-height: 481px) and (min-width: 916px) {
     .picks {
@@ -451,9 +457,9 @@ p, ul, li {
     .picks {
       grid-row: 2 / -2;
       grid-template-columns: 1fr;
-      grid-template-rows: repeat(11, 30vh);
+      grid-template-rows: auto;
       grid-auto-rows: 66vw;
-      margin-bottom: 37px; } }
+      padding-top: 37px; } }
 
 .pick {
   width: 100%;
@@ -468,6 +474,9 @@ p, ul, li {
   padding: 10px;
   grid-column: span 1 / -1;
   grid-row: 1 / span 1; }
+  .buttons .remove {
+    background-color: #FFFFFFCC;
+    padding: 0 6px; }
 
 .title {
   grid-column: 1 / -1;
@@ -482,21 +491,3 @@ p, ul, li {
   grid-row: 1 / -1;
   justify-self: start;
   align-self: start; }
-
-.frame {
-  grid-column: 1 / -1;
-  grid-row: 2 / span 1;
-  display: grid;
-  overflow: hidden; }
-
-.synopsis {
-  grid-column: 1 / -1;
-  grid-row: 1 / -1;
-  overflow-y: scroll;
-  transition: 0.8s;
-  transform: translateY(125%);
-  background-color: #ffffffcc; }
-
-.show {
-  transition: 0.8s;
-  transform: translateY(0); }

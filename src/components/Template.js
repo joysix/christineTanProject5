@@ -3,7 +3,7 @@ import React from 'react';
 const Template = () => {
     return (
         <div className="template">
-            <div className="rank block"></div>
+            <div className="rank block">block</div>
             <div className="rank rank1"><p>1</p></div>
             <div className="rank rank2"><p>2</p></div>
             <div className="rank rank3"><p>3</p></div>

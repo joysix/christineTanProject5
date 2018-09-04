@@ -12,6 +12,7 @@ p, ul, li {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, 1fr);
+  align-content: start;
   list-style: none; }
   @media (min-height: 481px) and (min-width: 916px) {
     .picks {
@@ -25,9 +26,9 @@ p, ul, li {
     .picks {
       grid-row: 2 / -2;
       grid-template-columns: 1fr;
-      grid-template-rows: repeat(11, 30vh);
+      grid-template-rows: auto;
       grid-auto-rows: 66vw;
-      margin-bottom: 37px; } }
+      padding-top: 37px; } }
 
 .pick {
   width: 100%;
@@ -42,6 +43,9 @@ p, ul, li {
   padding: 10px;
   grid-column: span 1 / -1;
   grid-row: 1 / span 1; }
+  .buttons .remove {
+    background-color: #FFFFFFCC;
+    padding: 0 6px; }
 
 .title {
   grid-column: 1 / -1;
@@ -56,21 +60,3 @@ p, ul, li {
   grid-row: 1 / -1;
   justify-self: start;
   align-self: start; }
-
-.frame {
-  grid-column: 1 / -1;
-  grid-row: 2 / span 1;
-  display: grid;
-  overflow: hidden; }
-
-.synopsis {
-  grid-column: 1 / -1;
-  grid-row: 1 / -1;
-  overflow-y: scroll;
-  transition: 0.8s;
-  transform: translateY(125%);
-  background-color: #ffffffcc; }
-
-.show {
-  transition: 0.8s;
-  transform: translateY(0); }
