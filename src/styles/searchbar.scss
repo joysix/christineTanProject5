@@ -1,7 +1,7 @@
 @import './utils.scss';
 
 form.search {
-  grid-column: 1 / span 3;
+  grid-column: 1 / span 2;
   grid-row: 1 / span 1;
   display: flex;
   background-color: $accent;
@@ -30,7 +30,7 @@ input[type=text],
 
 input.search {
   margin-right: 0;
-  width: 100%;
+  width: 30%;
   @media (max-width: 480px) {
     width: 100%;
   }
@@ -49,7 +49,7 @@ input.search {
 }
 
 .lists {
-  grid-column: span 1 / -1;
+  grid-column: span 2 / -1;
   grid-row: 1 / span 1;
   display: flex;
   flex-flow: row nowrap;
